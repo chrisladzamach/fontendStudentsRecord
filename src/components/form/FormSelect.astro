@@ -1,0 +1,29 @@
+---
+// const { id, label, options = [], required = false, value = "" } = Astro.props;
+interface Option {
+  value: string;
+  label: string;
+}
+
+const { id, label, options = [], required = false, value = "" } = Astro.props as {
+  id: string;
+  label: string;
+  options: Option[];
+  required?: boolean;
+  value?: string;
+};
+---
+<div class="flex flex-col mb-4">
+  <label for={id} class="text-sm font-medium text-gray-700 mb-1">{label}</label>
+  <select
+    id={id}
+    name={id}
+    required={required}
+    value={value}
+    class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+  >
+    {
+      options.map((opt) => (<option value={opt.value}>{opt.label}</option>))
+    }
+  </select>
+</div>

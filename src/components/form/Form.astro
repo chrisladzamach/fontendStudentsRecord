@@ -1,0 +1,49 @@
+---
+import FormInput from "../../components/form/FormInput.astro";
+import FormSelect from "../../components/form/FormSelect.astro";
+import FormTextarea from "../../components/form/FormTextarea.astro";
+import FormSection from "../../components/form/FormSection.astro";
+import FormButton from "../../components/form/FormButton.astro";
+---
+<form method="POST" class="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-md">
+  <FormSection title="Información Personal">
+    <FormInput id="full_name" label="Nombre completo" required />
+    <FormSelect id="id_type" label="Tipo de documento" required options={[
+      { value: "CC", label: "Cédula" },
+      { value: "TI", label: "Tarjeta de Identidad" },
+      { value: "CE", label: "Cédula de Extranjería" },
+    ]} />
+    <FormInput id="id_number" label="Número de documento" required />
+    <FormInput id="birth_date" label="Fecha de nacimiento" type="date" required />
+    <FormInput id="birth_country" label="País de nacimiento" />
+    <FormInput id="birth_state" label="Departamento de nacimiento" />
+    <FormInput id="birth_city" label="Ciudad de nacimiento" />
+  </FormSection>
+
+  <FormSection title="Contacto y Residencia">
+    <FormInput id="phone_number" label="Teléfono" />
+    <FormInput id="residence_country" label="País de residencia" />
+    <FormInput id="residence_state" label="Departamento de residencia" />
+    <FormInput id="residence_city" label="Ciudad de residencia" />
+    <FormInput id="residence_neighborhood" label="Barrio" />
+    <FormInput id="residence_address" label="Dirección" />
+  </FormSection>
+
+  <FormSection title="Información Académica">
+    <FormInput id="registration_year" label="Año de inscripción" type="number" required />
+    <FormSelect id="is_active" label="Activo" required options={[
+      { value: "true", label: "Sí" },
+      { value: "false", label: "No" }
+    ]} />
+    <FormInput id="grade_id" label="ID del grado" type="number" />
+    <FormInput id="rank_id" label="ID del rango" type="number" />
+  </FormSection>
+
+  <FormSection title="Observaciones">
+    <FormTextarea id="observations" label="Observaciones" placeholder="Notas adicionales" />
+  </FormSection>
+
+  <div class="flex justify-end mt-6">
+    <FormButton text="Registrar Estudiante" />
+  </div>
+</form>
